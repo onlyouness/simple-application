@@ -9,7 +9,7 @@
         <!-- Navigation -->
         <nav class="hidden md:flex space-x-4">
           
-          <a href="/" class="py-2 px-4 <?= $requestUri == '/' ? 'bg-gray-500 text-white'  : 'text-gray-700' ?>   hover:text-blue-600">Home</a>
+          <a href="<?= $UrlPrefix ?>/" class="py-2 px-4 <?= $requestUri == '/' ? 'bg-gray-500 text-white'  : 'text-gray-700' ?>   hover:text-blue-600">Home</a>
           <a href="<?= $UrlPrefix ?>/about" class="py-2 px-4 <?= $requestUri == '/about' ? 'bg-gray-500 text-white'  : 'text-gray-700' ?>  hover:text-blue-600">About</a>
           <a href="#" class="py-2 px-4 <?= $requestUri == '/services' ? 'bg-gray-500 text-white'  : 'text-gray-700' ?>  hover:text-blue-600">Services</a>
           <a href="#" class="py-2 px-4 <?= $requestUri == '/contact' ? 'bg-gray-500 text-white'  : 'text-gray-700' ?>  hover:text-blue-600">Contact</a>

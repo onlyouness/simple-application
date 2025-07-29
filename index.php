@@ -1,23 +1,30 @@
 <?php
+require 'vendor/autoload.php';
+
+use Hp\Phpexe\Controllers\indexController;
+use Hp\Phpexe\Controllers\articleController;
+use Hp\Phpexe\App\Router;
+
 require 'tools.php';
+require 'config.php';
 $name      = 'Ye Site';
 $UrlPrefix = '/php-exe';
 
 $requestUri = str_replace($UrlPrefix, '', $_SERVER['REQUEST_URI']);
+$requestMethod = $_SERVER['REQUEST_METHOD'];
 $parsedUrl  = parse_url($requestUri);
 $url        = $parsedUrl['path'];
 
-dd($_SERVER);
-// Define your routes
-$routes = [
-    '/'        => 'controllers/indexController.php',
-    '/about'   => 'controllers/aboutController.php',
-    '/contact' => 'controllers/contactController.php',
-];
 
-if (array_key_exists($url, $routes)) {
-    require $routes[$url];
-} else {
-    http_response_code(404);
-    require 'views/404.php';
-}
+$router = new Router();
+// $router->add('/',function(){
+//     $index = new indexController();
+//     $index->indexAction();
+// });
+$router->add('/articles/{id}',function($id){
+    // dd($id);
+    $blog = new articleController();
+    $blog->showAction($id);
+});
+$router->dispatcher($url);
+

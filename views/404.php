@@ -1,5 +1,8 @@
 
-<?php require 'partials/head.view.php'?>
+<?php
+require 'views/partials/head.view.php';
+require 'views/partials/header.view.php';
+?>
 
 
   <main class="max-w-7xl mx-auto p-4">
