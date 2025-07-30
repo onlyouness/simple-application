@@ -9,11 +9,12 @@ class Router
     {
         $this->routes[$path] = $handler;
     }
+    
     public function dispatcher(string $path): void
     {
         foreach ($this->routes as $route => $handler) {
             $pattern = preg_replace('#\{\w+\}#',"([^\/]+)",$route);
-            dd([$route,$this->routes,$pattern]);
+            // dd([$route,$this->routes,$pattern]);
             if(preg_match("#^$pattern$#",$path,$matches)){
                 array_shift($matches);
                 call_user_func_array($handler,$matches);

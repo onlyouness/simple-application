@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+use Hp\Phpexe\Commands\MainCommands;
+
+require_once(__DIR__ . '/vendor/autoload.php');
+require_once(__DIR__ . '/tools.php');
+
+
+
+$commands = new MainCommands();
+
+$commands->handler($argv);
