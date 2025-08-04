@@ -1,7 +1,7 @@
 
 <?php
-require 'views/partials/head.view.php';
-require 'views/partials/header.view.php';
+    require 'views/partials/head.view.php';
+    require 'views/partials/header.view.php';
 ?>
 
 

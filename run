@@ -5,6 +5,7 @@ use Hp\Phpexe\Commands\MainCommands;
 
 require_once(__DIR__ . '/vendor/autoload.php');
 require_once(__DIR__ . '/tools.php');
+require_once(__DIR__ . '/config.php');
 
 
 

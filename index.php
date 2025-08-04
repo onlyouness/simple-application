@@ -1,6 +1,7 @@
 <?php
 require 'vendor/autoload.php';
 
+use Hp\Phpexe\App\Database\Db;
 use Hp\Phpexe\Controllers\indexController;
 use Hp\Phpexe\Controllers\articleController;
 use Hp\Phpexe\App\Router;
@@ -17,10 +18,13 @@ $url        = $parsedUrl['path'];
 
 
 $router = new Router();
-// $router->add('/',function(){
-//     $index = new indexController();
-//     $index->indexAction();
-// });
+$router->add('/',function(){
+    $pdo = Db::getConnection();
+    $users = $pdo->query("SELECT * FROM users")->fetchAll();
+    dd($users);
+    $index = new indexController();
+    $index->indexAction();
+});
 $router->add('/articles/{id}',function($id){
     // dd($id);
     $blog = new articleController();
