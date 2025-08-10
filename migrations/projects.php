@@ -1,11 +1,23 @@
 <?php
+
+use Hp\Phpexe\App\Database\Db;
 use Hp\Phpexe\App\Migration;
 
-class ProjectsMigration extends Migration {
-    public function up() {
+class ProjectsMigration extends Migration
+{
+
+
+    public function up()
+    {
         // Add your columns here
         // Example: $this->add('column_name', 'type');
-        $this->add('name','varchar(255)')
-        ->add('type','varchar(255)');
+        $this->id();
+        $this->string('first_name');
+        $this->string('last_name')->notnull();
+        $this->string('birthday')->notnull();
+        
+        $this->unique('birthday');
+        $this->unique('last_name');
+        $this->unique(['last_name', 'birthday']);
     }
 }

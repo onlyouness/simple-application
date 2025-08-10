@@ -1,4 +1,5 @@
 <?php
+
 namespace Hp\Phpexe\App\Database;
 
 use PDO;

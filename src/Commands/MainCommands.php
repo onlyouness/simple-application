@@ -46,7 +46,7 @@ class MainCommands
                 $tablename = $this->get_arg_value($args, '--table');
 
                 if (! $tablename) {
-                    echo "Error: --table argument is required.\n";
+                    echo "Error: --table:table_name argument is required.\n";
                     exit(1);
                 }
 
@@ -95,25 +95,9 @@ class MainCommands
                 $className = ucfirst($tablename) . 'Migration';
                 $migration = new $className;
                 $migration->up();
-                $columns   = [];
-                $columns[] = "`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY";
-                foreach ($migration->columns as $name => $type) {
-                    $columns[] = "`$name` $type";
-                }
-                $columns[] = "`created_at` datetime";
-                $columns[] = "`updated_at` datetime";
+                $migration->execute();
 
-                $query = "CREATE TABLE IF NOT EXISTS `" . $tablename . "` (\n";
-                $query .= implode(",\n", $columns);
-                $query .= "\n)";
-                $db     = Db::getConnection();
-                $result = $db->query($query)->execute();
-                if ($result) {
-                    echo "Migration run successfully";
-                } else {
-                    echo "Something went wrong...";
-                }
-                exit(1);
+               
         }
     }
 }
